@@ -1,7 +1,7 @@
 import random
 import numpy as np
 # markdown
-import mdutils
+from mdutils.mdutils import MdUtils
 #
 #
 #
@@ -85,17 +85,21 @@ def MakeKlassekart(grupper, navnedic, kartdic):
 def GenerateMdFile(finalseatmap):
     # data is finalseatmap
     # create file
-    mdFile = mdutils(file_name ="klassekart_10C", title = "Klassekart 10C uke XX")
+    mdFile = MdUtils(file_name ="klassekart_10C", title = "Klassekart 10C uke XX")
     
 
     # create tables
-    pos = finalseatmap.keys()
+    pos = list(finalseatmap.keys())
     foran = pos[0:3]
+    eleverforan = []
     #midten = pos[3:6]
     #bak = [pos[-3], "bak midten", pos[-1]]
 
-    for pos in foran:
-        foran.extend([pos[0][0] + " " + pos[0][1], pos[1][0] + " " + pos[1][1], pos[2][0] + " " + pos[2][1]])
+    #for pos in foran:
+    #    for elev in finalseatmap[pos]:
+    #    foran.extend([elev[0] + elev[1], ])
+
+    foran.extend(["omg", "lol", "hei"])
     
     mdFile.new_line()
     mdFile.new_table(columns = 3, rows = 2, text = foran, text_align = "center")
@@ -111,36 +115,60 @@ def GenerateTxtFile(finalseatmap):
     midten = pos[3:6]
     bak = [pos[-2], "bak midten", pos[-1]]
 
-    rows = ["", "", ""]
+    rows = []
+    sep = "  "*5
+    
+    # foran
+    toprow1 = ""
+    for i in foran:
+        toprow1 += "|" + i + "|" + sep
+    
+    toprow2 = ""
+    for par in foran:
+        temp = ""
+        for elev in finalseatmap[par]:
+            temp += " " + elev
+        toprow2 += "|" + temp + "|" + sep
+    
+    rows.append([toprow1, toprow2])
 
-    for place, group in finalseatmap.items():
-        sep = " "*20
-        if place in pos:
-            if place in foran:
-                t = place +"\n"
-                for i in group:
-                    t += i + " "
-                t += " |" + sep
-                rows[0] += t
-            
-            elif place in midten:
-                t = place+"\n"
-                for i in group:
-                    t += i + " "
-                t += " |" + sep
-                rows[1] += t
-            
-            elif place in bak:
-                t = place+"\n"
-                for i in group:
-                    t += i + " "
-                t += " |" + sep
-                rows[2] += t
-            
-        sep = sep*2
+    # midten
+    midrow1 = ""
+    for i in midten:
+        midrow1 += "|" + i + "|" + sep
+    
+    midrow2 = ""
+    for par in midten:
+        temp = ""
+        for elev in finalseatmap[par]:
+            temp += " " + elev
+        midrow2 += "|" + temp + "|" + sep
+    
+    rows.append([midrow1, midrow2])
+
+    # bakerst
+    bakrow1 = ""
+    for i in bak:
+        bakrow1 += "|" + i + "|" + sep
+    
+    bakrow2 = ""
+    for par in bak:
+        temp = ""
+        if par in finalseatmap.keys():
+            for elev in finalseatmap[par]:
+                temp += " " + elev
+            bakrow2 += "|" + temp + "|" + sep
+        else:
+            bakrow2 += "|" + sep + "|" + sep
+    
+    rows.append([bakrow1, bakrow2])
     
     for row in rows:
-        f.write(row)
+        for line in row:
+            f.write(line + "\n")
+        f.write("\n\n")
+    
+    f.write("\n"+"-----------------------------------------------------------------------------------"+"\n\n")
     
     f.close() 
 #
@@ -150,7 +178,8 @@ def GenerateTxtFile(finalseatmap):
 #test = MakeGrupper(Klasse10C())
 grupper = MakeGrupper(Klasse10C())
 klassekart = MakeKlassekart(grupper, Klasse10C(), Seatmap())
-GenerateTxtFile(klassekart)
+GenerateMdFile(klassekart)
+#GenerateTxtFile(klassekart)
     
 
 
