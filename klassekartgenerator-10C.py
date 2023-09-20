@@ -109,32 +109,35 @@ def GenerateTxtFile(finalseatmap):
     pos = list(finalseatmap.keys())
     foran = pos[0:3]
     midten = pos[3:6]
-    bak = [pos[-3], "bak midten", pos[-1]]
+    bak = [pos[-2], "bak midten", pos[-1]]
 
     rows = ["", "", ""]
 
     for place, group in finalseatmap.items():
+        sep = " "*20
         if place in pos:
             if place in foran:
-                t = place+"\n"
+                t = place +"\n"
                 for i in group:
                     t += i + " "
-                t += "          "
+                t += " |" + sep
                 rows[0] += t
             
             elif place in midten:
                 t = place+"\n"
                 for i in group:
                     t += i + " "
-                t += "          "
+                t += " |" + sep
                 rows[1] += t
             
             elif place in bak:
                 t = place+"\n"
                 for i in group:
                     t += i + " "
-                t += "          "
+                t += " |" + sep
                 rows[2] += t
+            
+        sep = sep*2
     
     for row in rows:
         f.write(row)
