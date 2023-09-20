@@ -1,11 +1,14 @@
 import random
 import numpy as np
+# markdown
+import Mdutils
 #
 #
 #
 #
 # Define names and seatmap #
 # list and dic
+#
 def Klasse10C():
     navneliste = ["Mohammad", "Sarah", "Liselotte", "Helga", "Tiril",
             "Rateb", "Mohamed Yassin", "Mohamed", "Dani", "Oliver",
@@ -19,17 +22,18 @@ def Klasse10C():
 # define flags as global for the purpose of this particular class only
 flags = [12, 5, 6, 10]
 
+# Function to hold seatmap
 def Seatmap():
-    # coordinates: number of students
-    layout = {"foran venstre":2, "foran midten":2, "foran høyre":2,
-              "midten venstre":2, "midten midten":2, "midten høyre":2,
-              "bak venstre":2, "bak høyre": 3}
+    koord = ["foran venstre","foran midten","foran høyre","midten venstre","midten midten","midten høyre","bak venstre","bak høyre"]
+    
+    # all but the largest key in layout dic hold 2 students
+    layout = {i+1: pos for i, pos in enumerate(koord)}
     
     return layout
 #
 #
-# Define generator #
 #
+# Make groups of students
 def MakeGrupper(navnedic):#, kartdic):
     # ensure klassekart is a go wrt flags
     go = False
@@ -57,10 +61,41 @@ def MakeGrupper(navnedic):#, kartdic):
             else:
                 go = True
                 return grupper
+#
+#
+# Make the final seatmap
+def MakeKlassekart(grupper, navnedic, kartdic):
+    # generate a printable/showable seatmap
+    # grupper is a list of lists of ints
+    # navnedic is a dic of int:names
+    # kartdic is numberofstudents:coordinates
+    
+    posisjoner = list(kartdic.values())
+    klassekart = {pos:"" for pos in posisjoner}
+
+    for nr, group in enumerate(grupper):
+        names = [navnedic[i] for i in group]
+
+        klassekart[posisjoner[nr]] = names
+    
+    return klassekart
+#
+#
+# Generate seat map as markdown
+def GenerateMdFile(finalseatmap):
+    # create file
+    mdFile = Mdutils(file_name = "klassekart-10C", title = "Klassekart 10C uke XX")
+    mdFile.create_md_file()
+
+
+
 
 # Testing #
-test = MakeGrupper(Klasse10C())
-print(test)
+#test = MakeGrupper(Klasse10C())
+grupper = MakeGrupper(Klasse10C())
+test2 = MakeKlassekart(grupper, Klasse10C(), Seatmap())
+print(test2)
+
     
 
 
