@@ -1,0 +1,88 @@
+---
+title: "Mattelekse uke 46 - vanskelig"
+subtitle: "Kirkenes skole 8. trinn 2024-2025"
+format: pdf
+---
+
+:::: {layout="[0.5, 0.5]"}
+
+::: {#firstcol}
+# Eksempeloppgave
+**Startverdi = 10**
+
+1. Legg til 5
+2. Multipliser med 3
+3. Trekk fra 9
+4. Finn $50\,\%$
+5. Multipliser med 3
+6. Finn $\frac{1}{6}$
+:::
+
+::: {#secondcol}
+# Løsning eksempeloppgave
+1. $10 + 5 = 15$
+2. $15\cdot 3 = 45$
+3. $45 - 9 = 36$
+4. $50\,\%$ av 36 er det samme som $\frac{36}{2} = 18$
+5. $18\cdot 3 = 54$
+6. $\frac{54}{6} = 9$
+
+**Løsning: 9**
+:::
+::::
+
+# Oppgave 1
+**Startverdi = 7**
+
+1. Legg til 8
+2. Multipliser med 3
+3. Trekk fra 9
+4. Finn $50\,\%$
+5. Multipliser med 4
+6. Finn $\frac{5}{12}$
+7. Trekk fra 13
+8. Multipliser med 3
+9. Legg til 8
+
+# Oppgave 2
+**Startverdi = 35**
+
+1. Multipliser med 3
+2. Trekk fra 6
+3. Finn $\frac{1}{3}$
+4. Legg til 5
+5. Finn $50\,\%$
+6. Legg til 12
+7. Multipliser med 2
+8. Trekk fra 4
+9. Finn $50\,\%$
+
+# Oppgave 3
+**Startverdi = 29**
+
+1. Multipliser med 4
+2. Legg til 58
+3. Finn $\frac{5}{6}$
+4. Legg til 83
+5. Finn $\frac{1}{6}$
+6. Multipliser med 3
+7. Legg til $\frac{1}{6}$ av verdien
+8. Trekk fra 88
+9. Finn $\frac{2}{3}$
+
+# Oppgave 4
+**Startverdi = 85**
+
+1. Legg til 773
+2. Finn $\frac{5}{6}$
+3. Finn $80\,\%$
+4. Multipliser med 5
+5. Finn $70\,\%$
+6. Multipliser med 3
+7. Trekk fra 778
+8. Finn $\frac{3}{4}$
+9. Trekk fra 961
+
+
+
+
